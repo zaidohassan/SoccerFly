@@ -5,10 +5,22 @@
     placeholder="Type to Search"
     class="filter_input"
     [(ngModel)]="searchWord"
+    (input)="doFilter($event.target.value)"
   />
   <i class="fas fa-search" id="serach-btn"></i>
 </div>
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+<div>
+  <button class="toggleButton" (click)="toggleInventory = !toggleInventory">
+    Click Me!
+  </button>
+</div>
+<table
+  mat-table
+  [dataSource]="dataSource"
+  matSort
+  class="mat-elevation-z8"
+  *ngIf="toggleInventory"
+>
   <!-- Name Column -->
   <ng-container matColumnDef="first_name">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
@@ -42,3 +54,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+
+<div *ngIf="!toggleInventory">
+  Hello
+</div>

@@ -9,8 +9,9 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./inventory.component.css']
 })
 export class InventoryComponent implements OnInit {
-  players: newPlayer[];
-  filteredPlayers: newPlayer[];
+  players: newPlayer[] = this.dataService.getPlayers();
+  toggleInventory: boolean = true;
+  // filteredPlayers: newPlayer[];
   displayedColumns: string[] = [
     'first_name',
     'last_name',
@@ -27,6 +28,8 @@ export class InventoryComponent implements OnInit {
   // set searchWord(value: string) {
   //   this._searchWord = value;
   //   this.filteredPlayers = this.filterPlayer(value);
+  //   console.log(this.filteredPlayers);
+
   // }
 
   // filterPlayer(searchTerm: string) {
@@ -34,6 +37,7 @@ export class InventoryComponent implements OnInit {
   //     player.team.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
   //   });
   // }
+
   dataSource = new MatTableDataSource(this.players);
 
   @ViewChild(MatSort) sort: MatSort;
@@ -42,7 +46,15 @@ export class InventoryComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
-    this.players = this.dataService.getPlayers();
-    // this.filteredPlayers = this.players;
+
+    // this.players = this.dataService.getPlayers();
+
+    this.filteredPlayers = this.players;
+
+    // console.log('2', this.filteredPlayers);
   }
+
+  doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  };
 }

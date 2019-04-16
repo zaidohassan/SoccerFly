@@ -60,3 +60,10 @@ th.mat-sort-header-sorted {
 .filter_input_container:hover > #serach-btn {
   padding-right: 40px;
 }
+
+.toggleButton {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  margin-top: 4vh;
+}
