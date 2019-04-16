@@ -1,0 +1,99 @@
+<div class="cardContainer">
+  <mat-card class="card">
+    <h1>New Player Form</h1>
+
+    <!-- form submit -->
+
+    <form
+      class="example-form"
+      #userForm="ngForm"
+      (ngSubmit)="onSubmit(userForm)"
+    >
+      <mat-form-field
+        id="override"
+        class="first_name_input"
+        [hideRequiredMarker]="hideRequired"
+      >
+        <input
+          matInput
+          placeholder="First Name"
+          value=""
+          autocomplete="off"
+          #firstname
+          name="first_name"
+          required
+          [(ngModel)]="player.first_name"
+          #firstName="ngModel"
+        />
+      </mat-form-field>
+      <mat-form-field
+        class="last_name_input"
+        [hideRequiredMarker]="hideRequired"
+      >
+        <input
+          matInput
+          placeholder="Last Name"
+          value=""
+          autocomplete="off"
+          #lastname
+          name="last_name"
+          [(ngModel)]="player.last_name"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        class="team_name_input"
+        [hideRequiredMarker]="hideRequired"
+      >
+        <input
+          matInput
+          placeholder="Team Name"
+          value=""
+          #team
+          autocomplete="off"
+          name="team"
+          [(ngModel)]="player.team"
+          required
+        />
+      </mat-form-field>
+
+      <div class="selectContainer">
+        <mat-form-field class="position_select">
+          <mat-select #position name="position" [(ngModel)]="player.position">
+            <mat-option value="Goalkeeper">Goalkeeper</mat-option>
+            <mat-option value="Defender">Defender</mat-option>
+            <mat-option value="Midfielder">Midfielder</mat-option>
+            <mat-option value="Forward">Forward</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
+          class="birthday_select"
+          [hideRequiredMarker]="hideRequired"
+        >
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Date of Birth"
+            #birthday
+            name="birthday"
+            [(ngModel)]="player.birthday"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <button mat-button [disabled]="!userForm.form.valid">
+        Add Player
+      </button>
+    </form>
+
+    <!-- form ends -->
+  </mat-card>
+</div>

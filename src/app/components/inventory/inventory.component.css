@@ -1,0 +1,62 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-elevation-z8 {
+  margin-top: 5vh;
+}
+
+.filter_input_container {
+  width: 80px;
+  margin: auto;
+  margin-top: 4vh;
+  background: #3a5253;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.filter_input {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0;
+  color: white;
+  font-size: 20px;
+  transition: 0.4s;
+  width: 0px;
+  font-family: 'Roboto Slab';
+}
+
+.filter_input::placeholder {
+  color: white;
+  font-size: 18px;
+}
+
+#serach-btn {
+  color: #2af5ff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.filter_input_container:hover > .filter_input {
+  width: 150px;
+  padding: 30px;
+}
+
+.filter_input_container:hover {
+  width: 300px;
+}
+
+.filter_input_container:hover > #serach-btn {
+  padding-right: 40px;
+}

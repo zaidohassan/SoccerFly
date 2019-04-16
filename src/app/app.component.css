@@ -1,0 +1,49 @@
+.navOuterContainer {
+  width: 100%;
+  background-color: #1493ff;
+  height: 10vh;
+  font-family: 'Montserrat', cursive;
+}
+
+.navInnerContainer {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  color: #fff;
+  font-size: 20px;
+}
+
+.navlinks {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  width: 40%;
+  font-size: 20px;
+}
+
+span {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+li {
+  border: 2px solid white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+li:hover,
+li:active,
+li:focus {
+  color: #1493ff;
+  background-color: #fff;
+  font-weight: 600;
+}
+
+li:hover {
+  box-shadow: 5px 1px 3px 3px rgba(0, 0, 0, 0.2),
+    5px 1px 1px 0px rgba(0, 0, 0, 0.14), 5px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
