@@ -30,8 +30,10 @@ export class InventoryComponent implements OnInit {
   ngOnInit() {
     this.dataSource.sort = this.sort;
 
+    // gets players from dataservice
     this.players = this.dataService.getPlayers();
 
+    // subscribes to method to get player from api
     this.dataService.getPlayerData().subscribe(player => {
       let newPlayerArray = [];
       for (let i = 0; i < player.length; i++) {
@@ -41,19 +43,10 @@ export class InventoryComponent implements OnInit {
     });
   }
 
+  // filters through search string on table view. The card view has a pipe to filter through
   doFilter = (value: string) => {
     if (!this.toggleInventory) {
       this.dataSource.filter = value.trim().toLocaleLowerCase();
-    } else {
     }
   };
 }
-
-// this.playerCard.filter(player => {
-//   console.log(player);
-//   Object.values(player).includes(value);
-// });
-// .map(playerCard => {
-//   console.log(playerCard);
-//   playerCard;
-// });

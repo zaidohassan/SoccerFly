@@ -3,8 +3,7 @@ import {
   OnInit,
   ElementRef,
   ViewChild,
-  AfterViewInit,
-  AfterViewChecked
+  AfterViewInit
 } from '@angular/core';
 import { newPlayer } from '../../models/NewPlayer';
 import { DataService } from '../../services/data.service';
@@ -15,8 +14,7 @@ import * as Chart from 'chart.js';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent
-  implements OnInit, AfterViewInit, AfterViewChecked {
+export class DashboardComponent implements OnInit, AfterViewInit {
   selected = 'Goalkeeper';
   hideRequired = 'true';
   today = new Date();
@@ -40,7 +38,10 @@ export class DashboardComponent
   count = { GoalKeeper: 0, Defender: 0, MidFielder: 0, Forward: 0 };
 
   ngOnInit() {
+    // Gets Players in Service component and sets it to array so I can use for ChartJS
     this.players = this.dataService.getPlayers();
+
+    // counts the number of players in each position
     this.players.map(player => {
       if (player.position === 'Goalkeeper') {
         this.count.GoalKeeper++;
@@ -64,6 +65,7 @@ export class DashboardComponent
     //   {}
     // );
 
+    // initalizes the data
     this.chartData = {
       labels: ['Goalkeeper', 'Defender', 'MidFielder', 'Forward'],
       datasets: [
@@ -93,6 +95,7 @@ export class DashboardComponent
   }
 
   ngAfterViewInit() {
+    // chart takes a while to load to DOM and needs to be rendered after the init is intalized
     let chart = this.refChart.nativeElement;
     let ctx = chart.getContext('2d');
     let myChart = new Chart(ctx, {
@@ -116,12 +119,7 @@ export class DashboardComponent
     });
   }
 
-  ngAfterViewChecked() {
-    if (this.count.GoalKeeper !== 1) {
-      this.ngOnInit();
-    }
-  }
-
+  // submits the data to add to players data in dataservice
   onSubmit({ value, valid }: { value: newPlayer; valid: boolean }) {
     if (!valid) {
       console.log('hi');

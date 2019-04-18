@@ -49,6 +49,7 @@ export class DataService {
     return this.players;
   }
 
+  // hits API to get data to show in inventory. Please add the api_token provided after the question mark in the same string on line 56
   getPlayerData() {
     let newArr = this.playerById
       .map(id => {
@@ -61,6 +62,8 @@ export class DataService {
 
     return forkJoin(newArr);
   }
+
+  // adds player to data on top
 
   addPlayer(player: newPlayer) {
     this.players.unshift(player);
