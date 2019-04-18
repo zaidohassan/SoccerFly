@@ -3,6 +3,9 @@
   background-color: #1493ff;
   height: 10vh;
   font-family: 'Montserrat', cursive;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
 
 .navInnerContainer {
@@ -47,4 +50,38 @@ li:focus {
 li:hover {
   box-shadow: 5px 1px 3px 3px rgba(0, 0, 0, 0.2),
     5px 1px 1px 0px rgba(0, 0, 0, 0.14), 5px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 800px) and (max-width: 1200px) {
+  .navInnerContainer {
+    width: 70%;
+  }
+  .navlinks {
+    width: 20%;
+  }
+  li {
+    margin: 10%;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 799px) {
+  .navInnerContainer {
+    width: 90%;
+  }
+  .navlinks {
+    width: 45%;
+  }
+}
+
+@media (max-width: 499px) {
+  span {
+    display: none;
+  }
+  .navInnerContainer,
+  .navlinks {
+    width: 100%;
+  }
+  .navOuterContainer {
+    height: 12vh;
+  }
 }

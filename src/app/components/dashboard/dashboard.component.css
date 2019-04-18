@@ -4,23 +4,32 @@ h1 {
   font-weight: 600;
   font-size: 34px;
 }
+
 .cardContainer {
-  margin-top: 10vh;
-  margin-left: 5vh;
-  width: 40%;
+  margin: auto;
+  margin-top: 15vh;
+  width: 100%;
   height: 100%;
+  display: flex;
 }
 
 .card {
-  height: 60vh;
-  background: #fff;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+.card,
+#content {
+  height: 60vh;
   border-radius: 10px;
   padding-bottom: 24px;
   padding: 16px;
+  background: #fff;
+  margin: auto 5%;
 }
-
+#content {
+  width: 500px;
+}
 .example-form {
   margin-top: 15px;
 }
@@ -52,6 +61,10 @@ button {
   border-radius: 10px;
   font-family: 'Roboto Slab';
   font-size: 16px;
+}
+
+#chartTitle {
+  font-size: 25px;
 }
 
 ::ng-deep .mat-form-field-underline {
@@ -93,4 +106,47 @@ button {
 /* drop down text when hovered over  */
 ::ng-deep .mat-option:hover {
   background: green;
+}
+
+::ng-deep .chartjs-render-monitor {
+  margin-top: 5vh;
+  height: 400px;
+  width: 400px;
+}
+
+@media (min-width: 800px) and (max-width: 1100px) {
+  .card,
+  #content {
+    height: 40vh;
+    margin: auto 1%;
+  }
+  button {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 799px) {
+  .cardContainer {
+    flex-direction: column;
+  }
+  .card,
+  #content {
+    height: auto;
+    width: auto;
+    margin-bottom: 5%;
+  }
+  ::ng-deep .chartjs-render-monitor {
+    margin-top: 0;
+  }
+  button {
+    font-size: 20px;
+  }
+}
+
+@media (max-height: 850px) and (max-width: 1100px) and (min-width: 800px) {
+  .card,
+  #content {
+    height: 55vh;
+    margin: auto 1%;
+  }
 }

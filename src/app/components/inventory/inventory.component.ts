@@ -10,8 +10,8 @@ import { DataService } from '../../services/data.service';
 })
 export class InventoryComponent implements OnInit {
   players: newPlayer[] = this.dataService.getPlayers();
-  toggleInventory: boolean = true;
-  // filteredPlayers: newPlayer[];
+  playerCard = [];
+  toggleInventory: boolean = false;
   displayedColumns: string[] = [
     'first_name',
     'last_name',
@@ -19,42 +19,41 @@ export class InventoryComponent implements OnInit {
     'position',
     'birthday'
   ];
-  // private _searchWord: string;
-
-  // get searchWord(): string {
-  //   return this._searchWord;
-  // }
-
-  // set searchWord(value: string) {
-  //   this._searchWord = value;
-  //   this.filteredPlayers = this.filterPlayer(value);
-  //   console.log(this.filteredPlayers);
-
-  // }
-
-  // filterPlayer(searchTerm: string) {
-  //   return this.players.filter(player => {
-  //     player.team.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
-  //   });
-  // }
-
-  dataSource = new MatTableDataSource(this.players);
+  data: any;
 
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private dataService: DataService) {}
 
+  dataSource = new MatTableDataSource(this.players);
+
   ngOnInit() {
     this.dataSource.sort = this.sort;
 
-    // this.players = this.dataService.getPlayers();
+    this.players = this.dataService.getPlayers();
 
-    this.filteredPlayers = this.players;
-
-    // console.log('2', this.filteredPlayers);
+    this.dataService.getPlayerData().subscribe(player => {
+      let newPlayerArray = [];
+      for (let i = 0; i < player.length; i++) {
+        newPlayerArray.push(player[i]['data']);
+      }
+      this.playerCard = newPlayerArray;
+    });
   }
 
   doFilter = (value: string) => {
-    this.dataSource.filter = value.trim().toLocaleLowerCase();
+    if (!this.toggleInventory) {
+      this.dataSource.filter = value.trim().toLocaleLowerCase();
+    } else {
+    }
   };
 }
+
+// this.playerCard.filter(player => {
+//   console.log(player);
+//   Object.values(player).includes(value);
+// });
+// .map(playerCard => {
+//   console.log(playerCard);
+//   playerCard;
+// });

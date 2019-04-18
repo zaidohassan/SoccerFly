@@ -10,16 +10,20 @@
   <i class="fas fa-search" id="serach-btn"></i>
 </div>
 <div>
-  <button class="toggleButton" (click)="toggleInventory = !toggleInventory">
+  <button
+    mat-button
+    class="toggleButton"
+    (click)="toggleInventory = !toggleInventory"
+  >
     Click Me!
   </button>
 </div>
 <table
+  [hidden]="toggleInventory"
   mat-table
   [dataSource]="dataSource"
   matSort
   class="mat-elevation-z8"
-  *ngIf="toggleInventory"
 >
   <!-- Name Column -->
   <ng-container matColumnDef="first_name">
@@ -55,6 +59,21 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
-<div *ngIf="!toggleInventory">
-  Hello
+<div *ngIf="toggleInventory" class="entireCardContainer">
+  <div
+    *ngFor="let card of (playerCard | filter: searchWord)"
+    [ngStyle]="{ margin: 'auto' }"
+  >
+    <mat-card class="toggleInventory ? cardContainer : 'null'">
+      <div><img src="{{ card.image_path }}" alt="picture" /></div>
+
+      <div class="nameAttributes">{{ card.firstname }} {{ card.lastname }}</div>
+      <div class="nameAttributes">
+        <label>Country: </label> {{ card.nationality }}
+      </div>
+      <div class="nameAttributes">
+        <label>Date of Birth: </label> {{ card.birthdate }}
+      </div>
+    </mat-card>
+  </div>
 </div>

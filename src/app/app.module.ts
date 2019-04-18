@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, Pipe } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,9 +16,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule, MatProgressSpinnerModule } from '@angular/material';
 import { DataService } from './services/data.service';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, InventoryComponent],
+  declarations: [AppComponent, DashboardComponent, InventoryComponent, FilterPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatSortModule,
     MatProgressSpinnerModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [MatDatepickerModule, DataService],
   bootstrap: [AppComponent]

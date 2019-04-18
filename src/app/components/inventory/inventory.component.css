@@ -13,7 +13,7 @@ th.mat-sort-header-sorted {
 .filter_input_container {
   width: 80px;
   margin: auto;
-  margin-top: 4vh;
+  margin-top: 15vh;
   background: #3a5253;
   height: 40px;
   border-radius: 40px;
@@ -66,4 +66,106 @@ th.mat-sort-header-sorted {
   display: flex;
   align-items: center;
   margin-top: 4vh;
+  background: #3a5253;
+  color: #2af5ff;
+  width: 100px;
+  padding: 10px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  line-height: 0px;
+}
+
+.entireCardContainer {
+  width: 70%;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img {
+  width: 100%;
+  height: 100px;
+}
+
+.nameAttributes {
+  margin: 10px auto;
+  text-align: center;
+  font-family: 'Roboto Slab';
+}
+
+label {
+  font-weight: 650;
+  font-family: 'Montserrat';
+}
+
+.cardContainer {
+  -webkit-animation-name: spaceInUp;
+  animation-name: spaceInUp;
+  animation-duration: 1s;
+  border-radius: 10px;
+  margin: 10px auto;
+  height: 250px;
+  width: 150px;
+}
+
+@-webkit-keyframes spaceInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-transform: scale(0.2) translate(0%, -200%);
+    transform: scale(0.2) translate(0%, -200%);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-transform: scale(1) translate(0%, 0%);
+    transform: scale(1) translate(0%, 0%);
+  }
+}
+@keyframes spaceInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-transform: scale(0.2) translate(0%, -200%);
+    transform: scale(0.2) translate(0%, -200%);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-transform: scale(1) translate(0%, 0%);
+    transform: scale(1) translate(0%, 0%);
+  }
+}
+
+@media (min-width: 500px) and (max-width: 1200px) {
+  .entireCardContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 499px) {
+  ::ng-deep td.mat-cell:last-of-type,
+  td.mat-footer-cell:last-of-type,
+  th.mat-header-cell:last-of-type {
+    padding-right: 0px;
+    padding-left: 20px;
+    text-align: center;
+  }
+
+  ::ng-deep tr.mat-footer-row,
+  tr.mat-row {
+    height: 80px;
+  }
+
+  .entireCardContainer {
+    width: 100%;
+    flex-wrap: wrap;
+  }
 }
